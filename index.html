@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yanadoo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#popup_close').click(function(){
+                $('#popup').css({"display":"none"})
+            })
+        })
+    </script>
+    <link rel="shortcut icon" href="ddd.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Dongle:wght@300;400;700&family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Quicksand:wght@300;400;500;600;700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,900;1,800;1,900&family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; list-style: none; font-family: 'Inter', sans-serif;}
+        #quick { width: 190px; position: fixed; right: 30px; top: 120px; z-index: 9999;}
+        #quick:hover { cursor: pointer;}
+        header {width: 100%; height: 90px;  overflow: hidden; position: fixed; left: 0; top: 0;z-index: 9999; background-color: #fff;}
+        #header_box { width: 1200px; height: 70px;  margin: auto; margin-top: 10px;}
+        #logo { width: 80px; height: 20px; float: left; margin-top: 25px; margin-right: 20px;}
+        #logo>img { width: 100%; vertical-align: top; }
+        #menu {width: 700px; height: 20px; line-height: 20px; float: left; margin-top: 25px; margin-left: 20px;}
+        #menu>li { float: left; margin-right: 75px; font-size: 15px; font-weight: 600; position: relative;}
+        #menu>li>img { position: absolute; left: 0; top: -20px;}
+        #menu>li:last-child { margin-right: 0;}
+        #login { height: 35px; float: right; margin-top: 20px; line-height: 35px;}
+        #login>li { float: left;  margin-left: 20px;}
+        #login>li>img { height: 35px;}
+        #login>li:last-child { width: 77px; height: 35px; border-radius: 3px; background-color: #fded52; text-align: center; font-size: 14px; font-weight: 600;}
+        #slide { width: 100%; height: 600px; background: url(images/bigbnr_pc_firstSale.png) center no-repeat; margin-top: 90px;}
+        #slide_box { width: 1200px; height: 600px;  margin: auto; position: relative;}
+        #slide_box:hover { cursor: pointer;}
+        #slide_prevbtn { position: absolute; left: -100px; top: 0; bottom: 0; margin: auto;}
+        #slide_nextbtn { position: absolute; top: 0; bottom: 0; right: -100px; margin: auto;}
+        #slide_btn { width: 300px; height: 30px;  position: absolute; left: 0; right: 0; bottom: 10px; margin: auto; text-align: center;}
+        #slide_btn>li { width: 10px; height: 10px; border-radius: 12px; background-color: #fff; opacity: 0.5; display: inline-block; margin: 3px;}
+        #slide_btn>li:hover { cursor: pointer;}
+        #slide_btn>li:nth-child(1) { width: 40px; opacity: 1;}
+        #university { width: 100%; height: 583px; background-color: #f7f7fc; overflow: hidden;}
+        #university_box { width: 1200px; height: 500px;  margin: auto; margin-top: 22px; position: relative;}
+        #university_img { position: absolute; right: 0; top: 20px; width: 450px; }
+        #university_box>h2 { font-size: 35px; padding-top: 80px; }
+        #university_box>p { font-size: 17px; margin-top: 30px; font-weight: 400;}
+        #university_box>ul { width: 1200px; height: 120px; margin-top: 70px; }
+        #university_box>ul>li { width: 380px; height: 110px; float: left; margin-right: 30px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); padding-left: 30px; padding-top: 30px; box-sizing: border-box; position: relative;}
+        #university_box>ul>li>h4 { font-size: 19px; line-height: 29px; font-weight: 500;}
+        #university_box>ul>li:last-child { margin-right: 0;}
+        #university_box>ul>li>img { position: absolute; right: 30px;bottom: 18px; width: 40px;}
+        #best { width: 1200px;  margin: auto; margin-top: 60px;  }
+        #best>h2 { line-height: 100px;}
+        #best>ul { width: 100%; overflow: hidden;}
+        #best>ul>li { width: 277px; height: 270px; float: left;  margin-right: 30px;}
+        #best>ul>li>img { width: 100%; border-radius: 5px;}
+        #best>ul>li>h4 { margin: 10px 0; font-weight: 800;font-size: 15px;}
+        #best>ul>li>h5 { color: #717188; font-weight: 500;}
+        #best>ul>li:last-child { margin-right: 0;}
+        #welcome { width: 1200px; margin: auto; margin-top: 50px;}
+        #welcome>h2 { line-height: 100px;}
+        #welcome>ul { width: 100%; overflow: hidden;}
+        #welcome>ul>li { width: 277px; height: 270px; float: left; margin-right: 30px;}
+        #welcome>ul>li:last-child { margin-right: 0;}
+        #welcome>ul>li>img { width: 100%; border-radius: 5px;}
+        #welcome>ul>li>h4 { margin: 10px 0; font-weight: 800; font-size: 15px;}
+        #welcome>ul>li>h5 {color: #717188; font-weight: 500;}
+        #banner1 { width: 100%; height: 280px; background:#000  url(images/bnr_mid_pc_item01.png) center bottom no-repeat; margin-top: 80px; text-align: center; }
+        #banner1:hover { cursor: pointer;}
+        #banner1_box { width: 1200px; height: 280px; margin: auto; }
+        #banner1_box>ul {  height: 20px; margin-top: 30px;   float: right;}
+        #banner1_box>ul>li { width: 8px; height: 8px; border-radius: 10px; background-color: #fff; opacity: 0.5;  float: left; margin-right: 10px;}
+        #banner1_box>ul>li:first-child { width: 30px; opacity: 1;}
+        #top3 { width: 1200px; height: 620px; margin: auto; margin-top: 80px;}
+        #top3>h2 { line-height: 100px;}
+        #top3>ul { width: 100%; height: 520px; }
+        #top3>ul>li { width: 380px; height: 520px; margin-right: 30px; float: left; background-color: #555; border-radius: 15px; position: relative; overflow: hidden; transition: 0.5s;}
+        #top3>ul>li:hover { transform: translate(0, -20px);}
+        #top3>ul>li:nth-child(1) { background: url(images/hotbnr_item01.png) no-repeat; background-size: 380px;}
+        #top3>ul>li:nth-child(2) { background: url(images/hotbnr_item02.jpg)no-repeat;background-size: 380px;}
+        #top3>ul>li:last-child {  background: url(images/hotbnr_item03.png)no-repeat; margin-right: 0;background-size: 380px;}
+        #top3_box1 { width: 380px; height: 520px; background-color: #fc5d6a; position: absolute; left: 0; top: 380px;}
+        #top3_box2 { width: 380px; height: 520px; background-color: #fc5d6a;position: absolute; left: 0; top: 380px;}
+        #top3_box3 { width: 380px; height: 520px; background-color: #4fccb6;position: absolute; left: 0; top: 380px;}
+        #top3>ul>li:hover>div {  top: 0px;}
+        #top3>ul>li>div>h4 { width: 80%; position: absolute; left: 0; top: 20px; right: 0; margin: auto; color: #fff; font-size: 20px;line-height: 30px;}
+        #top3>ul>li:hover>div>h4{ font-size: 23px;}
+        #top3>ul>li>div>button {width: 150px; height: 40px; background-color: #eee; border: none; position: absolute; left: 10% ; bottom: 30px; border-radius: 5px;}
+        #today { width: 1200px; margin: auto; margin-top: 80px;}
+        #today>h2 { line-height: 100px;}
+        #today>ul { width: 1200px; overflow: hidden;}
+        #today>ul>li { width: 277px; height: 270px; float: left; margin-right: 30px;}
+        #today>ul>li:last-child { margin-right: 0;}
+        #today>ul>li>img { width: 100%;}
+        #today>ul>li>h4 { margin: 10px 0; font-size: 15px; }
+        #today>ul>li>h5 { color: #717188; font-weight: 500;}
+        #banner2 { width: 1200px; height: 130px; margin: auto; margin-top: 80px;  background: url(images/norbnr_bottom_pc_yafit_premium.png);}
+        #story { width: 100%; height: 575px; background-color: #f7f7fc; margin-top: 100px; position: relative;}
+        #story_prevbtn { position: absolute;left: -70px;bottom: 40px; right: 0; margin: auto; }
+        #story_nextbtn {  position: absolute;left: 0; right: -70px; bottom: 40px; margin: auto; }
+        #story_box {width: 1200px; margin: auto; overflow: hidden;  }
+        #story_box>h2 { line-height: 100px; margin-top: 60px; }
+        #story_box>ul { overflow: hidden; }
+        #story_box>ul>li {width: 380px; height: 310px;  float: left; margin-right: 30px;position: relative; }
+        #story_box>ul>li>h4 { margin-top: 20px; font-size: 18px; font-weight: 900; margin-bottom: 5px;}
+        #story_box>ul>li>h4>button { background-color: #ef894c; border: none; padding: 5px;border-radius: 5px; font-size: 11px; vertical-align: middle; color: #fff; font-weight: 600; }
+        #story_box>ul>li>h5 { font-weight: 400;}
+        #story_box>ul>li>img { width: 100%; border-radius: 5px;}
+        #story_box>ul>li:last-child { margin-right: 0;}
+        #event {width: 1200px; height: 500px; margin: auto; margin-top: 90px;overflow: hidden; }
+        #event>h2 {float: left; line-height: 90px; }
+        #event>h3 {float: right; margin-top: 40px; font-size: 15px; color: #555; font-weight: 900;}
+        #event>ul { width: 1200px; overflow: hidden;}
+        #event>ul>li { width: 582px; height: 370px; float: left; margin-right: 35px; overflow: hidden;}
+        #event>ul>li>h4 {margin-top: 15px;font-size: 18px;}
+        #event>ul>li>h5 { margin-top: 20px; color: #777; font-weight: 300;}
+        #event>ul>li:last-child { margin-right: 0;}
+        #event>ul>li>div {width: 100%; height: 280px; background: url(images/thumb_1640741570906.jpg)center no-repeat; background-size: 100%; border-radius: 5px; transition: 0.5s; }
+        #event>ul>li:last-child>div{width: 100%; height: 280px; background: url(images/event_list_1637654498132.png) center no-repeat; background-size: 100%; border-radius: 5px; transition: 0.5s; }
+        #event>ul>li>div:hover {background-size: 120%; cursor: pointer;}
+        #category { width: 100%; height: 280px; background-color: #1a1c20; }
+        #category_box { width: 1200px; height: 280px; margin: auto; }
+        #category_box_left { width: 600px; height: 200px; margin-top: 40px;  float: left; overflow: hidden; position: relative;}
+        #category_box_lefbtn { width: 40px; height: 40px; vertical-align: middle; margin-top: -5px;}
+        #category_box_left>h4 {margin-top: 40px;margin-bottom: 17px; color: #fff; font-weight: 600;}
+        #category_box_left>h2 {font-size: 35px; color: #555;}
+        #category_box_left>h2>span { color: #fff;}
+        #category_box_img { width: 280px; height: 280px; float: right; border-radius: 300px;}
+        footer { width: 1200px; height: 520px; margin: auto; margin-top: 65px; }
+        #footer_left { width: 500px; height: 500px; float: left;  margin-top: 10px;}
+        #footer_left>h3>img {width: 115px; height: 35px; }
+        #footer_left>h2 {margin-top: 142px; margin-bottom: 15px;}
+        #footer_left>p {font-size: 12px; color: #666; line-height: 24px; margin-bottom: 50px; }
+        #footer_left>h6 {margin-top: 20px; color: #666; font-size: 11px; font-weight: 300; line-height: 17px;}
+        #footer_right { width: 650px; height: 500px; float: right; margin-top: 10px;}
+        #footer_right_box { width: 650px; height: 200px;  }
+        #footer_right_box>ul {width: 175px; height: 180px; margin: auto;  float: left; margin-right: 62px;}
+        #footer_right_box>ul>li { margin-bottom: 35px; font-size: 14px; font-weight: 500; }
+        #footer_right_box>ul>li:first-child { font-size: 16px; font-weight: 900;}
+        #footer_right_box>ul:last-child { margin-right: 0;}
+        #footer_right_box2 { width: 680px; height: 70px; float: right; margin-top: 40px; }
+        #footer_right_box2>select { width: 220px; height: 40px; float: right; border: 1px solid #eee; border-radius: 5px; padding: 10px; font-size: 13px; font-weight: 700; }
+        #footer_right_box3 {  height: 35px; float: right; }
+        #footer_right_box3>ul>li{ width: 30px; height: 30px; float: left; margin-right: 10px;margin-top: 15px;} 
+        #footer_right_box3>ul>li:last-child { margin-right: 0;}
+        #footer_right_box3>ul>li:nth-child(2) {margin-right: 40px;}
+        #footer_right_box3>ul>li>img { width: 100%;}
+        #popup { width: 370px; height: 750px; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.116); position: absolute; right: 20px; top: 0; z-index: 999999999; background-color: #fff; }
+        #popup_title { width: 100%; height: 53px; background-color: #000; text-align: center; position: relative;}
+        #popup_title>p { color: #fff; line-height: 53px; font-size: 14px;}
+        #popup_close {width: 30px; height: 30px; position: absolute; top: 15px; right: 15px;}
+        #popup_img { width: 90%;position: absolute; left: 18px; right: 0px; bottom: 10px; top: 68px;}
+        #popup>ul { width: 344px; height: 206px; margin: auto; margin-top: 10px;position: absolute; left: 5px; bottom: 40px; right: 0; margin: auto; }
+        #popup>ul>li { width: 160px; height: 190px; margin: auto; background-color: #fff;float: left; margin-right: 15px; }
+        #popup>ul>li>.popup_li_imgbox {overflow: hidden;}
+        #popup>ul>li>.popup_li_imgbox>img { transition: 0.3s;}
+        #popup>ul>li:hover>.popup_li_imgbox>img { transform: scale(1.1);}
+        #popup>ul>li:last-child { margin-right: 0;}
+        #popup>ul>li>h4 { font-size: 13px; font-weight: 200;}
+        
+    </style>
+</head>
+<body>
+    <div id="popup">
+        <div id="popup_title">
+            <p>즉시 할인 쿠폰 받기 </p>
+            <img src="icons/adn_closed_btn_close_2021.png" alt="" id="popup_close">
+        </div>
+            <img src="images/KakaoTalk_20220210_123346866_01.png" alt="" id="popup_img">
+            <ul>
+                <li>
+                    <div class="popup_li_imgbox"><img src="images/da837ae08f868df94aea135f824b8af7.png" alt=""></div>
+                    <h4>기초회화 1위</h4>
+                </li>
+                <li>
+                    <div class="popup_li_imgbox"><img src="images/aab5ffcb56c36625f6d90bd725cd33c1.png" alt=""></div>
+                    <h4>1대1 개인과외</h4>
+                </li>
+            </ul>
+        
+    </div>
+    <img src="images/img_banner_counsel_v2.1ae3e670.png" alt=""id="quick">
+    <header>
+            <div id="header_box">
+                <h1 id="logo"><img src="icons/logo.png" alt=""></h1>
+                <ul id="menu">
+                    <li>입학안내</li>
+                    <li>야나두 영어</li>
+                    <li>야나두 핏 <img src="icons/KakaoTalk_20220126_105039401.png" alt=""></li>
+                    <li>야나두 클래스</li>
+                    <li>이벤트</li>
+                </ul>
+                <ul id="login">
+                    <li><img src="icons/header_cart.png" alt=""></li>
+                    <li>로그인</li>
+                </ul>
+            </div>
+    </header>
+    <div id="slide">
+        <div id="slide_box">
+            <img src="icons/mainslide_prev.png" alt="" id="slide_prevbtn">
+            <img src="icons/mainslide_next.png" alt="" id="slide_nextbtn">
+            <ul id="slide_btn">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div id="university">
+        <div id="university_box">
+            <img src="images/bg_university_book.a853e16c.png" alt="" id="university_img">
+            <h2>대학 그 이상의 배움, <br>
+                Yanadoo University에 입학하세요</h2>
+            <p>150만 성공 노하우를 가진 야나두와 함께 <br>
+                당신의 제 2의 멋진 인생을 시작해보세요</p>
+                <ul>
+                    <li><h4>Yanadoo University가<br>
+                        궁금해요</h4>
+                    <img src="icons/university_btn.png" alt=""></li>
+                    <li><h4>입학생 전용 <br>
+                        프리미엄 혜택</h4>
+                        <img src="icons/university_btn.png" alt=""></li>
+                    <li><h4>입학생 필수<br>
+                        자기계발 클래스</h4>
+                        <img src="icons/university_btn.png" alt="">  </li>
+                </ul>
+        </div>
+    </div>
+    <div id="best">
+        <h2>[150만 회원 PICK] BEST 영어 클래스</h2>
+        <ul>
+            <li><img src="images/thumb_firstSale.png" alt="">
+                 <h4>2022년 첫 세일 78% 할인</h4>
+                 <h5>#사상최대 #파격할인 #장학금</h5></li>
+            <li><img src="images/1001868_1641466140032.png" alt="">
+                <h4>기초회화 1위 영어 왕초보 마스터</h4>
+                <h5>#150만성공패턴 #올인원</h5></li>
+            <li><img src="images/1000847_1641466919083.png" alt="">
+                <h4>딱 90일만에 원어민과 말문트기</h4>
+                <h5>#기초회화 #하루10분 #왕초보탈출</h5></li>
+            <li><img src="images/1002009_1641466978002.png" alt="">
+                <h4>150만 영포자의 말문을 트여준 패턴영어</h4>
+                <h5>#원예나따라하기 #패턴학습</h5></li>
+        </ul>
+    </div>
+    <div id="welcome">
+        <h2>[웰컴 2022] 올해 주목할 만한 클래스</h2>
+        <ul>
+            <li>
+                <img src="images/thumb_yafit_free_211222.png" alt="">
+                <h4>딱 한 달만 무료로 타 볼까?</h4>
+                <h5>#야핏사이클 #한달앱이용료0원</h5>
+            </li>
+            <li>
+                <img src="images/1000848_1641466948861.png" alt="">
+                <h4>현지 올로케! 진짜 미국 영어</h4>
+                <h5>#실전영어 #미국현지 #원어민표현</h5>
+            </li>
+            <li>
+                <img src="images/1000853_1641467073567.png" alt="">
+                <h4>연봉 수직상승! 비즈니스 영어 90일 완성</h4>
+                <h5>#비즈니스영어 #직장인 #응급키트</h5>
+            </li>
+            <li>
+                <img src="images/1000851_1641467029652.png" alt="">
+                <h4>200개로 끝내는 원어민 필수표현</h4>
+                <h5>#리얼상황 #셀럽원어민영어</h5>
+            </li>
+        </ul>
+    </div>
+    <div id="banner1">
+            <div id="banner1_box">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+    </div>
+    <div id="top3">
+        <h2>[HOT] 실시간 TOP3 패키지</h2>
+        <ul>
+            <li><div id="top3_box1">
+
+                <h4>2022년 영어 새 출발 지원 사상 최대 혜택과 파격할인! 지금이 영어 시작 절호의 기회</h4>
+                <button>패키지 클래스 보기</button>
+            </div></li>
+            <li><div id="top3_box2">
+                <h4>150만 영포자의 말문을 트여준 야나두 대표강사 원예나의 패턴 영어</h4>
+                <button>패키지 클래스 보기</button>
+            </div></li>
+            <li><div id="top3_box3">
+                <h4>1년에 딱 한번, 설 파격 혜택을 놓치지 마세요</h4>
+                <button>패키지 클래스 보기</button>
+            </div></li>
+        </ul>
+    </div>
+    <div id="today">
+        <h2>[TODAY 추천] 지금 당신을 성장시킬 클래스</h2>
+        <ul>
+            <li>
+                <img src="images/1000853_1641467073567.png" alt="">
+                <h4>연봉 수직상승! 비즈니스 영어 90일 완성</h4>
+                <h5>#비즈니스영어 #직장인 #응급키트</h5>
+            </li>
+            <li>
+                <img src="images/thumb_1642152850126.png" alt="">
+                <h4>시작하는 투자자를 위한 재테크 가이드 <돈 모으기부터 불리기까지></h4>
+                <h5>#재테크 #국내주식 #미국주식</h5>
+            </li>
+            <li>
+                <img src="images/17_1637912614023.png" alt="">
+                <h4>퇴근 후 월 2백 더 버는 <무자본으로 시작하는 부업></h4>
+                <h5>#직장인 부업 #무자본 #창업성공</h5>
+            </li>
+            <li>
+                <img src="images/18_1637912631804.png" alt="">
+                <h4>초고속 승진! 일잘러가 되는 실무 스킬업</h4>
+                <h5>#비즈니스커뮤니케이션 #엑셀 #PPT</h5>
+            </li>
+        </ul>
+    </div>
+    <div id="banner2"></div>
+    <div id="story">
+        <img src="icons/mainslide_prev.png" alt="" id="story_prevbtn">
+        <img src="icons/mainslide_next.png" alt="" id="story_nextbtn">
+        <div id="story_box">
+            <h2>야나두 리얼 영어 성장 스토리 "야, 나두 했어"</h2>
+            <ul>
+                <li><img src="images/img_media_thumb_kkb.png" alt="">
+                <h4>배우 김기방 &nbsp;&nbsp;<button>야나두 6개월 차</button></h4>
+                <h5>김기방의 좋은 아빠되기 프로젝트</h5>
+            </li>
+                <li><img src="images/img_media_thumb_yjh_interview.png" alt="">
+                    <h4>미스코리아 유지형야나두 1년 차 &nbsp;&nbsp;<button>야나두 1년 차</button></h4>
+                    <h5>유지형의 1년 Before & After</h5></li>
+                <li><img src="images/img_media_thumb_mhg.jpg" alt="">
+                    <h4>수강생 민혜경50대 주부 &nbsp;&nbsp;<button>50대 주부</button></h4>
+                    <h5>지금도 늦지 않은 영어 도전기</h5></li>
+            </ul>
+        </div>
+    </div>
+    <div id="event">
+    <h2>진행중인 인기 이벤트</h2>
+    <h3>이벤트 전체 보기</h3>
+    <ul>
+        <li>
+            <div></div>
+            <h4>지금, 무료로 야핏 앱 다운로드 받으세요!</h4>
+            <h5>2021-12-29 ~ 2022-03-31</h5>
+        </li>
+        <li>
+            <div></div>
+            <h4>유캔두잇 챌린지</h4>
+            <h5>2021-11-23 ~ 2022-05-31</h5>
+        </li>
+    </ul>
+    </div>
+    <div id="category">
+        <div id="category_box">
+            <div id="category_box_left">
+                <h4>클래스 카테고리</h4>
+                <h2>영어/피트니스/주식/<span>부동산</span>/N잡러 <br>실무스킬/영상크리에이터 <img src="icons/university_btn.png" alt="" id="category_box_lefbtn"></h2>
+                
+            </div>
+            <img src="images/img_home_category_07_540x540.7b21cb55.png" alt="" id="category_box_img">
+        </div>
+    </div>
+    <footer>
+        <div id="footer_left">
+            <h3><img src="icons/logo.png" alt=""></h3>
+            <h2>1600.0563</h2>
+            <p>평일 : 09:00 ~ 18:00 <br>
+                점심시간 : 12:00 ~ 13:00 <br>
+                제휴문의 : yanadoo02@yanadoo.co.kr</p>
+         <h5>회사소개 · 개인정보처리방침 · 이용약관 · 공고사항</h5>
+            <h6>주식회사 야나두 (야나두 원격평생교육원) <br>
+
+                사업자등록번호 129-86-23477 · 통신판매업 신고번호 제2018-서울강남-02139호<br>
+                
+                대표 김정수, 김민철 · 개인정보보호 책임자 정호용<br>
+                
+                주소 서울시 강남구 영동대로 96길 26, 3, 4층 (삼성동, Place 1)<br>
+                
+                원격 평생교육 시설신고 서울특별시 강남 서초교육지원청 (제 원516호)</h6>
+        </div>
+        <div id="footer_right">
+            <div id="footer_right_box">
+                <ul>
+                    <li>고객센터</li>
+                    <li>고객센터 바로가기</li>
+                    <li>자주 묻는 질문</li>
+                    <li>1:1 문의하기</li>
+                </ul>
+                <ul>
+                    <li>카카오톡 상담</li>
+                    <li>@야나두 친구추가</li>
+                </ul>
+                <ul>
+                    <li>제휴 및 단체수강 문의</li>
+                    <li> B2B 및 단체수강 소개</li>
+                    <li>제휴문의</li>
+                    <li>단체 수강 문의</li>
+                </ul>
+            </div>
+            <div id="footer_right_box2"><select name="" id="">
+            <option value="">Rdlated Sites</option>
+            <option value="">유캔두</option>
+            <option value="">야나두 클래스</option>
+        </select></div>
+        <div id="footer_right_box3">
+            <ul>
+                <li><img src="icons/etc_icon1.png" alt=""></li>
+                <li><img src="icons/etc_icon2.png" alt=""></li>
+                <li><img src="icons/sns1.png" alt=""></li>
+                <li><img src="icons/ico_band_70x70.34ae136a.png" alt=""></li>
+                <li><img src="icons/sns2.png" alt=""></li>
+                <li><img src="icons/sns3.png" alt=""></li>
+            </ul>
+        </div>
+        </div>
+        
+    </footer>
+</body>
+</html>
